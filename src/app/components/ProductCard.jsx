@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { FaRegEye } from "react-icons/fa";
+import { FaCartArrowDown } from "react-icons/fa";
 const ProductCard = ({ product, onSelect }) => {
 
  
   return (
-    <div className="group relative border border-primary/20 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden bg-white">
+    <div className="w-11/12 mx-auto">
+      <div className="group relative  rounded-2xl shadow-md hover:shadow-xl transition-transform hover:scale-105 overflow-hidden bg-white">
       
-      {/* Optimized Next.js Image */}
+      {/* Product Image */}
       <div className="relative w-full h-52">
         <Image
           src={`https://admin.refabry.com/storage/product/${product.image}`}
@@ -19,25 +21,30 @@ const ProductCard = ({ product, onSelect }) => {
 
       {/* Product Info */}
       <div className="p-4 flex flex-col items-center text-center">
-        <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
+        <h2 className="text-lg font-semibold text-gray-800 group-hover:text-primary transition">
+          {product.name}
+        </h2>
 
         <div className="flex gap-4 mt-4">
+          {/* View Details Button */}
           <Link
             href={`/product/${product.id}`}
-            className="text-primary font-medium text-sm hover:underline transition"
+            className="bg-red-800 hover:bg-red-700 text-white p-3 rounded-full transition"
           >
-            View Details
+            <FaRegEye/>
           </Link>
 
+          {/* Select Button */}
           <button
             onClick={() => onSelect(product)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm transition"
+            className="bg-white hover:bg-red-800 border border-red-800 text-red-800 hover:text-white p-3 rounded-full transition"
           >
-            Select
+            <FaCartArrowDown />
           </button>
         </div>
       </div>
 
+    </div>
     </div>
   );
 };

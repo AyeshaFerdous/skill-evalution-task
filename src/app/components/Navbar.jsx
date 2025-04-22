@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="w-11/12 mx-auto px-4 py-3 flex items-center justify-between">
 
         {/* Logo or Brand Name */}
-        <div className="text-2xl font-bold text-white">
+        <div className="text-xl md:text-2xl font-bold text-white">
           CloudCore IT
         </div>
 

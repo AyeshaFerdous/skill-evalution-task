@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrder, resetOrder } from "../redux/orderSlice";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 export default function OrderForm({ selectedProducts }) {
   const dispatch = useDispatch();
@@ -51,7 +52,8 @@ export default function OrderForm({ selectedProducts }) {
     });
   };
   return (
-    <div className="p-6 max-w-lg mx-auto">
+    <div className="w-11/12 mx-auto py-6 flex flex-col lg:flex-row items-center justify-center">
+      <div className="p-6 max-w-lg mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-center">Place Your Order</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -60,7 +62,7 @@ export default function OrderForm({ selectedProducts }) {
           placeholder="Your Name"
           value={formData.c_name}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-400 p-2 rounded outline-none"
           required
         />
         <input
@@ -69,7 +71,7 @@ export default function OrderForm({ selectedProducts }) {
           placeholder="Phone Number"
           value={formData.c_phone}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-400 p-2 rounded outline-none"
           required
         />
         <textarea
@@ -77,12 +79,12 @@ export default function OrderForm({ selectedProducts }) {
           placeholder="Address"
           value={formData.address}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-400 p-2 rounded outline-none"
           required
         />
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          className="w-full bg-red-800 text-white py-2 rounded hover:bg-red-700"
           disabled={loading}
         >
           {loading ? "Placing Order..." : "Place Order"}
@@ -91,5 +93,10 @@ export default function OrderForm({ selectedProducts }) {
         
       </form>
     </div>
+    <div>
+        <Image src={'/order.jpg'} alt="place your order" width={400} height={400}></Image>
+    </div>
+    </div>
+   
   );
 }
